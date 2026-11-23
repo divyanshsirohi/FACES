@@ -1,0 +1,79 @@
+
+# ==========================================
+# Rust
+# ==========================================
+
+# Build artefacts
+target/
+
+# Rust generated files
+**/*.rs.bk
+*.pdb
+
+# Cargo lockfile
+# Keep Cargo.lock for applications/emulators.
+# Do NOT ignore Cargo.lock.
+
+# ==========================================
+# FPGA / Shrike Lite
+# ==========================================
+
+# Generated FPGA build output
+ffpga/build/
+**/build/
+
+# Temporary synthesis and implementation files
+*.asc
+*.bin
+*.bit
+*.svf
+*.vcd
+*.fst
+
+# FPGA tool temporary files
+*.log
+*.tmp
+*.bak
+
+# ==========================================
+# Simulation
+# ==========================================
+
+sim/build/
+sim/out/
+sim/results/
+*.vcd
+*.fst
+*.lxt
+*.lxt2
+
+# ==========================================
+# Firmware build artefacts
+# ==========================================
+
+firmware/build/
+firmware/target/
+*.elf
+*.hex
+*.uf2
+*.o
+*.a
+
+# ==========================================
+# Editors / IDEs
+# ==========================================
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ==========================================
+# OS
+# ==========================================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
