@@ -37,6 +37,10 @@ use std::env;
 use std::fs;
 use std::process;
 
+/**
+ * all good things start with a single function.
+ */ 
+
 fn get_opcode(mnemonic: &str) -> Option<u16> {
     match mnemonic {
         "NOP"  => Some(0x0),
@@ -67,12 +71,36 @@ fn parse_reg(token: &str) -> Result<u16, String> {
         .to_uppercase();
     //ensure that register names start with R, else rejected
     if let Some(reg_num) = clean.strip_prefix('R') {
-        
+        if let Ok(reg) = reg_num.parse::<u16>() {
+            if reg <= 7{
+                return Ok(reg);
+            }
+        }
     }
+    Err(format!("Invalid register '{}': expected R0-R7", token))
 }
+
+// Translates an entire assembly source string into $readmemh-ready 16-bit hex lines.
+fn assemble (source: &str) -> Result<String, String> {
+    let mut labels: HashMap<String, u16> = HashMap::new();
+    let mut instructions: Vec<(usize, u16, String)> = Vec::new();
+
+    let mut pc: u16 = 0;
+
+    // PASS 1: Strip comments, record label addresses, and collect instructions
+    //
+
+
+}
+
 
 fn main() {
     println!("Hello, world!");
+    // Prints: Err("Invalid register 'RX7': expected R0-R7")
+    println!("{:?}", parse_reg("RX7"));
+
+    // Prints: Ok(2)
+    println!("{:?}", parse_reg("[r2]"));
 }
 
 
